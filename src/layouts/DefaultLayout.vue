@@ -1,8 +1,7 @@
 <template>
     <header>
         <nav>
-            <RouterLink to="/">Главная</RouterLink>
-            <RouterLink to="/second">Вторая страница</RouterLink>
+            <RouterLink :to="{name: 'home'}">Главная</RouterLink>
         </nav>
     </header>
 
