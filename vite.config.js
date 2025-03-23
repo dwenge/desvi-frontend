@@ -7,7 +7,7 @@ import { env } from 'process'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: env['url'] || '/',
+  base: env['BASE_PATH'] || '/',
   plugins: [
     vue(),
 
