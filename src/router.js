@@ -1,9 +1,9 @@
 import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 import NotFoundPage from "./pages/NotFoundPage.vue";
+import HomePage from "./pages/HomePage.vue";
 
 const routes = [
-    { path: '/', component: HelloWorld },
+    { path: '/', component: HomePage },
     { path: '/:pathMatch(.*)', component: NotFoundPage },
 ]
 
