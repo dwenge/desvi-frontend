@@ -2,11 +2,11 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 const route = useRoute()
-const layout = computed(() => route.meta.layout || 'default-layout')
+const layout = computed(() => route.meta.layout || 'DefaultLayout')
 </script>
 
 <template>
-  <component :is="layout">
+  <component :is="layout" :class="layout">
     <RouterView />
   </component>
 </template>

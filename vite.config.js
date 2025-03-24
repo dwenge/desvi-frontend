@@ -1,17 +1,18 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {resolve} from 'path'
-import { env } from 'process'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: env['BASE_URL'] || '/',
+  base: process.env.BASE_URL || '/',
   plugins: [
     vue(),
+    tailwindcss()
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(__dirname, './src'),
     }
   }
 })
