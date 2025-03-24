@@ -1,27 +1,27 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 import HomePage from "./pages/HomePage.vue";
+import ProjectPage from "./pages/ProjectPage.vue";
 
 // Список адресов
 export const routes = [
-    {
-        path: '/',
-        name: 'home',
-        component: HomePage,
-        meta: {
-            title: 'Главная',
-            menu: 'Главная',
-        }
-    },
     // {
-    //     path: '/second',
-    //     name: 'second',
-    //     component: SecondPage,
+    //     path: '/',
+    //     name: 'home',
+    //     component: HomePage,
     //     meta: {
-    //         title: 'Вторичная',
-    //         menu: 'Вторичная',
+    //         title: 'Главная',
+    //         menu: 'Главная',
     //     }
     // },
+    {
+        path: '/',
+        name: 'project',
+        component: ProjectPage,
+        meta: {
+            title: 'Проект',
+        }
+    },
     {
         path: '/:pathMatch(.*)',
         name: 'not-found',
