@@ -1,12 +1,15 @@
-import { createApp, resolveComponent } from 'vue'
-import '@/style.css'
+import { createApp } from 'vue'
 import App from '@/App.vue'
 import router from '@/router'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import layouts from './layouts'
+
+import '@/style.css'
 
 const app = createApp(App)
 
-app.component('default-layout', DefaultLayout)
+layouts.forEach(layout => {
+    app.component(layout.name, layout)
+})
 
 app.use(router)
 

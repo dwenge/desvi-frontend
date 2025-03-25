@@ -1,14 +1,22 @@
+<script>
+export default {
+    name: 'DefaultLayout'
+}
+</script>
+
 <template>
-    <header>
-        <nav>
-            <RouterLink :to="{name: 'home'}">Главная</RouterLink>
-            <RouterLink :to="{name: 'second'}">Second</RouterLink>
-        </nav>
-    </header>
+    <div class="bg-(--layout-color) py-10 px-5 min-h-screen select-none">
+        <div class="container mx-auto"> 
 
-    <main>
-        <slot></slot>
-    </main>
+            <header class="shrink">
+                <img src="@/assets/icons/logo-itj.svg?no-inline" alt="">
+            </header>
 
-    <footer></footer>
+            <slot></slot>
+
+            <footer class="shrink">
+            </footer>
+
+        </div>
+    </div>
 </template>

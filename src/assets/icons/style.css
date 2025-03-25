@@ -1,0 +1,60 @@
+.i-caret-right {
+    content:url('./caret-right.svg')
+}
+
+.i-caret2-left {
+    content:url('./caret2-left.svg');
+}
+.i-caret2-right {
+    content:url('./caret2-left.svg');
+    transform: rotate(180deg);
+}
+
+.i-search {
+    content:url('./search.svg')
+}
+.i-eye {
+    content:url('./eye.svg')
+}
+.i-lamp {
+    content:url('./lamp.png')
+}
+
+.i-arrow-left-white {
+    content: url('./arrow-left-white.svg');
+}
+.i-arrow-right-white {
+    content: url('./arrow-left-white.svg');
+    transform: rotate(180deg);
+}
+.i-arrow-top {
+    content: url('./array-top.svg');
+}
+.i-arrow-bottom {
+    content: url('./array-top.svg');
+    transform: rotate(180deg);
+}
+.i-handle-white {
+    content: url('./handle-white.svg');
+}
+.i-plus {
+    content: url('./plus.svg')
+}
+.i-plus-white {
+    content: url('./plus.svg');
+    filter: invert(1)
+}
+.i-or {
+    content: url('./or.svg');
+}
+.i-or-white {
+    content: url('./or.svg');
+    filter: invert(1);
+}
+.i-close {
+    content: url('./close.svg');
+}
+.i-close-white {
+    content: url('./close.svg');
+    filter: invert(1);
+}

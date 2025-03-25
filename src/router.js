@@ -1,15 +1,57 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 import HomePage from "./pages/HomePage.vue";
-import SecondPage from "./pages/SecondPage.vue";
+import ProjectPage from "./pages/ProjectPage.vue";
+import ViewPage from "./pages/ViewPage.vue";
 
-const routes = [
-    { path: '/', name: 'home', component: HomePage },
-    { path: '/second', name: 'second', component: SecondPage },
-    { path: '/:pathMatch(.*)', name: 'not-found', component: NotFoundPage },
+// Список адресов
+export const routes = [
+    // {
+    //     path: '/',
+    //     name: 'home',
+    //     component: HomePage,
+    //     meta: {
+    //         title: 'Главная',
+    //         menu: 'Главная',
+    //     }
+    // },
+    {
+        path: '/',
+        name: 'project',
+        component: ProjectPage,
+        meta: {
+            title: 'Проект',
+        }
+    },
+    {
+        path: '/view',
+        name: 'view',
+        component: ViewPage,
+        meta: {
+            title: 'Страница',
+            layout: 'empty-layout'
+        }
+    },
+    {
+        path: '/:pathMatch(.*)',
+        name: 'not-found',
+        component: NotFoundPage,
+        meta: {
+            title: 'Страница не найдена',
+        }
+    },
 ]
 
-export default createRouter({
+const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
     routes
 })
+
+// Установка заголовка на странице
+router.beforeEach((to) => {
+    const defaultTitle = 'Страница без заголовка'
+    const { title } = to.meta
+    document.title = title || defaultTitle
+})
+
+export default router
