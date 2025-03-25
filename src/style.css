@@ -1,7 +1,35 @@
 @import 'tailwindcss';
 @import '@/assets/fonts/Proxima Nova/stylesheet.css';
+@import '@/assets/icons/style.css';
 
 @theme {
     --default-font-family: 'Proxima Nova';
     --layout-color: #e3e3e3;
+}
+
+@layer components {
+    .key {
+        @apply rounded-xl border-2 border-black w-[49px] h-[30px] flex items-center justify-center text-sm font-extrabold
+    }
+}
+
+/* animations */
+
+.animation-move-handle {
+    animation: move-handle 3s linear 5s infinite;
+}
+
+@keyframes move-handle {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-10px);
+    }
+    20% {
+        transform: translateX(+10px);
+    }
+    30% {
+        transform: translateX(0);
+    }
 }

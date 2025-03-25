@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 import HomePage from "./pages/HomePage.vue";
 import ProjectPage from "./pages/ProjectPage.vue";
+import ViewPage from "./pages/ViewPage.vue";
 
 // Список адресов
 export const routes = [
@@ -20,6 +21,15 @@ export const routes = [
         component: ProjectPage,
         meta: {
             title: 'Проект',
+        }
+    },
+    {
+        path: '/view',
+        name: 'view',
+        component: ViewPage,
+        meta: {
+            title: 'Страница',
+            layout: 'empty-layout'
         }
     },
     {

@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps } from 'vue';
+import { RouterLink } from 'vue-router';
 
 defineProps({
     page: {
@@ -14,12 +15,12 @@ defineProps({
 
 <template>
     <div class="bg-white rounded-xl flex gap-5" :class="page.items.length > 1 ? 'flex-col' : 'items-center'">
-        <a href="#" class="p-5 flex items-center gap-2.5">
+        <RouterLink to="/view" class="p-5 flex items-center gap-2.5">
             {{ page.title }} <img src="@/assets/icons/caret-right.svg" alt="">
-        </a>
+        </RouterLink>
         <div class="flex">
 
-            <a v-for="item in page.items" href="#"
+            <RouterLink to="/view" v-for="item in page.items"
                 :class="page.items.length > 1 ? 'flex-col pb-3.5' : 'gap-2.5 pr-3.5'"
                 class="
                     grow flex items-center
@@ -38,7 +39,7 @@ defineProps({
                     bg-no-repeat bg-center
                 "></span>
                 <span :class="{'opacity-0': !item.visited}" class="bg-[url(@/assets/icons/eye.svg)] w-[12px] h-[6px]"></span>
-            </a>
+            </RouterLink>
 
         </div>
     </div>
