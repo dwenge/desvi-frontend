@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, onUpdated, ref, watchEffect } from 'vue';
 
 import iconOther from '@/assets/icons/other.svg?no-inline'
 import icon320 from '@/assets/icons/320.svg?no-inline'
@@ -23,28 +23,44 @@ const page = ref({
 })
 
 const showModal = ref(false)
-
 const closeModal = () => showModal.value = false
-
 const onShowModal = (e) => {
     if (e.keyCode===27) {
         showModal.value = !showModal.value
     }
 }
-
 onMounted(() => {
     document.addEventListener('keydown', onShowModal)
 })
-
 onUnmounted(() => {
     document.removeEventListener('keydown', onShowModal)
 })
 
+
+const imgContainer = ref(null)
+const overflowPx = ref(true)
+const calcOverflow = () => {
+    overflowPx.value = imgContainer?.value?.scrollWidth - imgContainer?.value?.clientWidth
+}
+onMounted(() => {
+    calcOverflow()
+    window.addEventListener('resize', calcOverflow)
+})
+onUnmounted(() => {
+    window.removeEventListener('resize', calcOverflow)
+})
+onUpdated(() => {
+    calcOverflow()
+})
 </script>
 
 <template>
-    <div class="scroll-auto">
-        <img class="outline-1 mx-auto max-w-none" style="zoom:var(--zoom, .8)" src="@/assets/1920_index.png" alt="">
+    <div data-before-overflow-text="выход за границу" class="max-w-screen overflow-x-hidden relative" ref="imgContainer">
+        <img class="outline-1 mx-auto max-w-none" src="@/assets/1920_index.png" alt="">
+        <div v-if="overflowPx > 0" class="fixed right-0 top-0 bottom-0 w-10
+            bg-linear-to-r from-transparent to-red-400
+            font-bold text-center text-white
+        " style="writing-mode: tb;">Выход за границу на {{ overflowPx }}px</div>
     </div>
 
     <div v-if="showModal" class="fixed top-0 w-full h-screen flex flex-col gap-5 bg-black/30 backdrop-blur-lg text-white" @scroll.prevent="">
