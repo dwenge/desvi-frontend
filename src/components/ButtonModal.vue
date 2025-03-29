@@ -39,3 +39,14 @@ const wrapClasses = computed(() => {
         <div class="text-lg font-bold" :class="textClass">{{text}}</div>
     </div>
 </template>
+
+<style>
+@import 'tailwindcss';
+
+@layer components {
+    .btn-modal {
+        @apply size-[72px] bg-black/25 cursor-pointer hover:bg-black/35 transition-colors duration-250
+    }
+}
+
+</style>

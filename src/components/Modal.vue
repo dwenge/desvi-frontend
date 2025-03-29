@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watchEffect, defineProps } from 'vue'
+import { onUnmounted, watchEffect, defineProps } from 'vue'
 import ButtonModal from './ButtonModal.vue'
 
 const props = defineProps({
@@ -16,9 +16,6 @@ const props = defineProps({
 const emit = defineEmits(['update:show'])
 const closeModal = () => emit('update:show', false)
 
-onMounted(() => {
-    console.log(props.touchElement)
-})
 onUnmounted(() => {
     document.body.classList.remove('overflow-hidden')
 })

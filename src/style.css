@@ -11,10 +11,6 @@
     .key {
         @apply rounded-xl border-2 border-black w-[49px] h-[30px] flex items-center justify-center text-sm font-extrabold
     }
-
-    .btn-modal {
-        @apply size-[72px] bg-black/25 cursor-pointer hover:bg-black/35 transition-colors duration-250
-    }
 }
 
 /* animations */
