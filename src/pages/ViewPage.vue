@@ -1,14 +1,8 @@
 <script setup>
-import { computed, onMounted, onUnmounted, onUpdated, ref, watchEffect } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import ViewListContainer from '@/containers/ViewListContainer.vue';
 import ChangeNotify from '@/components/ChangeNotify.vue';
-
-
-const imgContainer = ref(null)
-const overflowPx = ref(true)
-const calcOverflow = () => {
-    overflowPx.value = imgContainer?.value?.scrollWidth - imgContainer?.value?.clientWidth
-}
+import ImageView from '@/components/ImageView.vue';
 
 const showViewList = ref(false)
 let _tap = false;
@@ -28,17 +22,6 @@ const onTabShowModal = (e) => {
             break;
     }
 }
-
-onMounted(() => {
-    calcOverflow()
-    window.addEventListener('resize', calcOverflow)
-})
-onUnmounted(() => {
-    window.removeEventListener('resize', calcOverflow)
-})
-onUpdated(() => {
-    calcOverflow()
-})
 
 
 const showChangeNotify = ref(false)
@@ -71,20 +54,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="max-w-screen overflow-x-hidden relative" ref="imgContainer"
+    <ImageView
         @touchstart="onTabShowModal"
         @touchmove="(e) => {
             onTabShowModal(e)
             onSwipeChangeNotify(e)
         }"
         @touchend="onTabShowModal"
-    >
-        <img class="mx-auto max-w-none" src="@/assets/1920_index.png" alt="">
-        <div v-if="overflowPx > 0" class="fixed right-0 top-0 bottom-0 w-10
-            bg-linear-to-r from-transparent to-red-400
-            font-bold text-center text-white
-        " style="writing-mode: tb;">Выход за границу на {{ overflowPx }}px</div>
-    </div>
+    />
 
     <ViewListContainer v-model:show="showViewList" />
 
